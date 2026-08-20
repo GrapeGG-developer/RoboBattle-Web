@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ru" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoboBattle — Скачать игру на Android</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts: Inter & Press Start 2P for Pixel Accent -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&family=Press+Start+2P&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        metro: {
+                            navy: '#050b14',
+                            darkBlue: '#0a192f',
+                            cardBlue: '#0f2744',
+                            tileBlue: '#0052a3',
+                            tileCyan: '#0080ff',
+                            accentCyan: '#00d2ff',
+                            glow: '#00f0ff'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        pixel: ['"Press Start 2P"', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .pixelated {
+            image-rendering: pixelated;
+            image-rendering: crisp-edges;
+            -ms-interpolation-mode: nearest-neighbor;
+        }
+
+        /* Windows 8 Metro Tile Base Styles */
+        .metro-tile {
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.15s ease-out, box-shadow 0.2s ease-out, border-color 0.2s ease-out;
+            border: 2px solid rgba(0, 210, 255, 0.18);
+            background-color: rgba(15, 39, 68, 0.85);
+            backdrop-filter: blur(12px);
+        }
+
+        .metro-tile:hover {
+            transform: translateY(-2px) scale(1.005);
+            border-color: rgba(0, 240, 255, 0.8);
+            box-shadow: 0 12px 30px -5px rgba(0, 210, 255, 0.25), 0 0 20px rgba(0, 210, 255, 0.15);
+        }
+
+        .metro-tile:active {
+            transform: scale(0.98);
+            border-color: #00f0ff;
+        }
+
+        /* Grid noise overlay */
+        .bg-grid-pattern {
+            background-size: 32px 32px;
+            background-image: 
+                linear-gradient(to right, rgba(0, 210, 255, 0.04) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 210, 255, 0.04) 1px, transparent 1px);
+        }
+
+        /* Metro Glow Animation for Download CTA */
+        @keyframes metroGlow {
+            0%, 100% {
+                box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 35px rgba(0, 240, 255, 0.7);
+            }
+        }
+
+        .download-glow {
+            animation: metroGlow 3s infinite ease-in-out;
+        }
+    </style>
+</head>
+
+<body class="bg-metro-navy text-white min-h-screen font-sans flex flex-col justify-between selection:bg-metro-accentCyan selection:text-black overflow-x-hidden relative">
+
+    <!-- Background Layer with Assets fallback -->
+    <div class="fixed inset-0 z-0 opacity-20 pointer-events-none pixelated bg-cover bg-center" style="background-image: url('assets/Background.png'); font-size: 0;"></div>
+    <div class="fixed inset-0 z-0 bg-grid-pattern pointer-events-none"></div>
+
+    <!-- Metro Navigation Bar -->
+    <header class="relative z-10 border-b border-metro-tileBlue/40 bg-metro-navy/90 backdrop-blur-md px-6 md:px-12 py-4 flex justify-center items-center">
+        <div class="flex items-center space-x-3">
+            <div class="w-9 h-9 rounded bg-metro-tileCyan/30 border border-metro-glow flex items-center justify-center text-metro-glow shadow-[0_0_12px_rgba(0,240,255,0.4)]">
+                <i class="fa-solid fa-robot text-lg"></i>
+            </div>
+            <div class="flex items-center space-x-2">
+                <span class="font-pixel text-sm md:text-base text-metro-glow tracking-wider">ROBO BATTLE</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="relative z-10 flex-grow container mx-auto px-4 md:px-8 py-10 md:py-16 max-w-5xl flex flex-col justify-center">
+        
+        <!-- Top Section Title -->
+        <div class="mb-8">
+            <div class="inline-flex items-center space-x-2 px-3 py-1 bg-metro-tileBlue/40 border border-metro-glow/40 text-metro-glow text-xs font-mono mb-2 uppercase">
+                <i class="fa-solid fa-gamepad"></i>
+                <span>Официальный сайт игры</span>
+            </div>
+            <h1 class="text-4xl md:text-6xl font-black tracking-tight text-white uppercase">
+                ROBO <span class="text-metro-glow">BATTLE</span>
+            </h1>
+        </div>
+
+        <!-- Metro Content Tile Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+            <!-- Main Info Tile (2 columns on medium screens) -->
+            <div class="metro-tile md:col-span-2 p-6 md:p-8 flex flex-col justify-between bg-gradient-to-br from-metro-cardBlue/90 via-metro-darkBlue/90 to-metro-navy/90 relative group">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center gap-6 mb-6">
+                    <!-- Icon -->
+                    <div class="w-24 h-24 sm:w-28 sm:h-28 flex-shrink-0 border-2 border-metro-glow/40 bg-metro-navy p-2 shadow-[0_0_20px_rgba(0,82,163,0.4)]">
+                        <img src="assets/IconFullSize.png" alt="RoboBattle Icon" class="w-full h-full object-contain pixelated" onerror="this.src='https://placehold.co/128x128/0f2744/00d2ff?text=RoboBattle';">
+                    </div>
+                    <!-- Game Text -->
+                    <div>
+                        <div class="inline-flex items-center space-x-2 px-2.5 py-1 bg-purple-950/70 border border-purple-500/50 text-emerald-400 text-xs font-mono mb-3">
+                            <i class="fa-solid fa-code text-purple-400"></i>
+                            <span>Разработчик: <strong class="text-purple-300">GrapeScript</strong></span>
+                        </div>
+                        <h2 class="text-xl sm:text-2xl font-bold text-white mb-2">
+                            Создано <span class="bg-gradient-to-r from-purple-400 via-fuchsia-400 to-emerald-400 bg-clip-text text-transparent font-black">GrapeScript</span>
+                        </h2>
+                        <p class="text-blue-200 text-sm leading-relaxed">
+                            Официальный проект от разработчика <span class="text-emerald-400 font-bold">GrapeScript</span>. Динамичный 2D арена-экшен в стиле <strong class="text-purple-300">Brotato</strong> и <strong class="text-purple-300">Vampire Survivors</strong>. Выживай против волн врагов, прокачивай характеристики и уничтожай орды противников!
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dedicated Download Button Tile -->
+            <a href="https://github.com/GrapeGG-developer/RoboBattle/releases" target="_blank" rel="noopener noreferrer" class="metro-tile p-6 sm:p-8 bg-gradient-to-br from-metro-tileBlue via-metro-tileCyan to-metro-accentCyan flex flex-col justify-between group download-glow cursor-pointer min-h-[220px]">
+                <div class="flex justify-between items-start">
+                    <div class="w-14 h-14 bg-black/20 border border-white/30 flex items-center justify-center text-2xl text-white group-hover:scale-110 transition-transform">
+                        <i class="fa-brands fa-github"></i>
+                    </div>
+                    <span class="text-[10px] font-mono tracking-widest text-cyan-950 font-bold bg-white/80 px-2 py-1 uppercase">Релиз</span>
+                </div>
+
+                <div class="my-4">
+                    <span class="text-xs uppercase font-mono tracking-wider text-cyan-950 font-semibold block">Скачать версию для Android</span>
+                    <h3 class="text-2xl font-black text-white uppercase mt-1 leading-tight group-hover:underline">
+                        Cкачать игру (APK)
+                    </h3>
+                    <p class="text-xs text-blue-950 font-medium mt-1">
+                        Переход к релизам на GitHub
+                    </p>
+                </div>
+
+                <div class="flex items-center justify-between text-xs font-bold text-black border-t border-black/10 pt-3">
+                    <span>Выбрать версию на GitHub</span>
+                    <i class="fa-solid fa-arrow-right text-base group-hover:translate-x-2 transition-transform"></i>
+                </div>
+            </a>
+
+        </div>
+
+    </main>
+
+</body>
+</html>
